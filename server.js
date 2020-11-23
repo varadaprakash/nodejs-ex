@@ -85,7 +85,7 @@ app.get('/', function (req, res) {
     col.insert({ip: req.ip, date: Date.now()});
     col.count(function(err, count){
       if (err) {
-        console.log('Error running count. Message:\n'+err);
+        console.log('error running count. Message:\n'+err);
       }
       res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
     });
@@ -112,11 +112,11 @@ app.get('/pagecount', function (req, res) {
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
-  res.status(500).send('Something bad happened!');
+  res.status(500).send('something bad happened!');
 });
 
 initDb(function(err){
-  console.log('Error connecting to Mongo. Message:\n'+err);
+  console.log('error connecting to Mongo. Message:\n'+err);
 });
 
 app.listen(port, ip);
